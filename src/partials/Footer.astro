@@ -13,7 +13,7 @@ const { date = new Date().getFullYear() } = Astro.props;
         >David Ewing</a
       >
     </p>
-    <p>Dedicated to the Longforgan Community</p>
+    <p>Dedicated to the Longforgan Community.</p>
     <!-- up arrow html code -->
     <button
       aria-label="Scroll to top"
@@ -67,3 +67,19 @@ const { date = new Date().getFullYear() } = Astro.props;
     }
   }
 </style>
+
+<script>
+  // Prevent layout shift and smooth scroll if user prefers reduced motion
+  const button = document.querySelector(
+    "button[aria-label='Scroll to top']"
+  ) as HTMLButtonElement;
+  button.addEventListener("click", () => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  });
+</script>

@@ -3,27 +3,62 @@ import Layout from "../layout/layout.astro";
 import Main from "../partials/Main.astro";
 import Image from "astro/components/Image.astro";
 const VillageShop = "/village-shop.jpg";
+const Strawberry = "/strawberry.svg";
+
+const summerMonths = [
+  5, // May
+  6, // June
+  7, // July
+  8, // August
+];
+const currentMonth = new Date().getMonth();
+if (summerMonths.includes(currentMonth)) {
+  console.log("It's summer!");
+} else {
+  console.log("It's not summer.");
+}
+
+console.log();
 ---
 
 <Layout pageTitle="Longforgan Newsagent and General Store">
   <Main>
     <div id="aboutus" class="wrapper aboutus-wrapper flow">
       <div class="aboutus__info">
-        <Image
-          class={"image"}
-          src={VillageShop}
-          loading={"eager"}
-          height={250}
-          width={250}
-          alt="About Us"
-          quality={80}
-          format="auto"
-        />
+        <div class="image-wrapper">
+          <!-- if morth == summerMonth show strawberry -->
+          {
+            summerMonths.includes(currentMonth) ? (
+              <Image
+                class={"absolute"}
+                src={Strawberry}
+                loading={"eager"}
+                height={65}
+                width={65}
+                alt="About Us"
+                quality={80}
+                format="auto"
+              />
+            ) : null
+          }
+
+          <Image
+            class={"image"}
+            src={VillageShop}
+            loading={"eager"}
+            height={250}
+            width={250}
+            alt="About Us"
+            quality={80}
+            format="auto"
+          />
+        </div>
+
         <h2 class="title">Welcome to Longforgan Newsagent and General Store</h2>
         <p>
-          Your local convenience store and Post Office – open 7 days a week. We
-          are a Premier retailer offering newspapers, groceries, butcher meat,
-          artisan bread, tobacco products, lottery tickets, and more.
+          Your local convenience store and Post Office – open 7 days a week. A
+          Premier retailer and newsagent offering newspapers, groceries, butcher
+          meat, artisan bread, tobacco products, lottery tickets, and more.
         </p>
       </div>
     </div>
@@ -184,6 +219,30 @@ const VillageShop = "/village-shop.jpg";
 
   .aboutus__info > p {
     max-width: 70ch;
+  }
+
+  .image-wrapper {
+    position: relative;
+  }
+
+  .absolute {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+    scale: 0.8;
+    animation: rotate 4s linear infinite alternate-reverse;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+      scale: 0.8;
+    }
+    100% {
+      transform: rotate(-65deg);
+      scale: 1.1;
+    }
   }
 
   /* Opening Times */

@@ -63,128 +63,6 @@
       </button>
     </div>
   </nav>
-
-  <style>
-    header {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      align-items: center;
-      padding: 1.5rem;
-      position: fixed;
-      top: 0;
-      left: 0;
-    }
-
-    ul {
-      font-size: 0.825rem;
-      display: flex;
-      justify-content: space-evenly;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .title {
-      font-size: clamp(1rem, 2vw + 0.85rem, 1.5rem);
-    }
-
-    .nav-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .mobile-nav {
-      display: flex;
-    }
-
-    .mobile-nav > button {
-      background: none;
-      border: none;
-    }
-
-    .mobile-nav-wrapper {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: var(--height, 0);
-      overflow: hidden;
-    }
-
-    @property --height {
-      syntax: "<length>";
-      inherits: false;
-      initial-value: "0";
-    }
-
-    .mobile-nav-wrapper.open {
-      padding: 1.5rem;
-      height: var(--height);
-      transition: 200ms ease-in-out;
-      width: 100%;
-      z-index: 1000;
-      background-color: #fff;
-    }
-
-    .mobile-nav-wrapper > ul {
-      gap: 1rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .close-menu,
-    .open-menu {
-      display: none;
-    }
-
-    .header-wrapper {
-      background-color: #fff;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    a:is(:hover, :focus) {
-      text-decoration: underline;
-      color: blue;
-    }
-
-    a:is(:visited, :active) {
-      color: purple;
-    }
-
-    @media (width < 1025px) {
-      .nav-wrapper > ul {
-        display: none;
-      }
-
-      .menu-icon {
-        min-width: 30px;
-        min-height: 30px;
-      }
-
-      .open-menu {
-        display: block;
-      }
-
-      .open-menu.open {
-        display: none;
-      }
-
-      .close-menu {
-        display: none;
-        z-index: 1001;
-      }
-
-      .close-menu.open {
-        display: block;
-      }
-    }
-  </style>
 </header>
 
 <script>
@@ -210,3 +88,126 @@
     mobileNavWrapper.classList.remove("open");
   });
 </script>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  ul {
+    font-size: 0.825rem;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .title {
+    font-size: clamp(1rem, 2vw + 0.85rem, 1.5rem);
+  }
+
+  .nav-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile-nav {
+    display: flex;
+  }
+
+  .mobile-nav > button {
+    background: none;
+    border: none;
+  }
+
+  .mobile-nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--height, 0);
+    overflow: hidden;
+  }
+
+  @property --height {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: "0";
+  }
+
+  .mobile-nav-wrapper.open {
+    padding: 1.5rem;
+    height: var(--height);
+    transition: 200ms ease-in-out;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff;
+  }
+
+  .mobile-nav-wrapper > ul {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .close-menu,
+  .open-menu {
+    display: none;
+  }
+
+  .header-wrapper {
+    background-color: #fff;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:is(:hover, :focus) {
+    text-decoration: underline;
+    color: blue;
+  }
+
+  a:is(:visited, :active) {
+    color: purple;
+  }
+
+  @media (width < 1025px) {
+    .nav-wrapper > ul {
+      display: none;
+    }
+
+    .menu-icon {
+      min-width: 30px;
+      min-height: 30px;
+    }
+
+    .open-menu {
+      display: block;
+    }
+
+    .open-menu.open {
+      display: none;
+    }
+
+    .close-menu {
+      display: none;
+      z-index: 1001;
+    }
+
+    .close-menu.open {
+      display: block;
+    }
+  }
+</style>
