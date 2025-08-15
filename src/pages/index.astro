@@ -1,16 +1,318 @@
 ---
-
+import Layout from "../layout/layout.astro";
+import Main from "../partials/Main.astro";
+import Image from "astro/components/Image.astro";
+const VillageShop = "/village-shop.jpg";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout pageTitle="Longforgan Newsagent and General Store">
+  <Main>
+    <div id="aboutus" class="wrapper aboutus-wrapper flow">
+      <div class="aboutus__info">
+        <Image
+          class={"image"}
+          src={VillageShop}
+          loading={"eager"}
+          height={250}
+          width={250}
+          alt="About Us"
+          quality={80}
+          format="auto"
+        />
+        <h2 class="title">Welcome to Longforgan Newsagent and General Store</h2>
+        <p>
+          Your local convenience store and Post Office – open 7 days a week. We
+          are a Premier retailer offering newspapers, groceries, butcher meat,
+          artisan bread, tobacco products, lottery tickets, and more.
+        </p>
+      </div>
+    </div>
+
+    <div id="contactus" class="wrapper contactus-wrapper flow">
+      <div>
+        <h2 class="title">Contact Us</h2>
+      </div>
+
+      <ul role="list" class="contact__info">
+        <li class="email">
+          <span class="contact__method">Email:</span> info@longforgannewsagent.com
+        </li>
+        <li class="phone">
+          <span class="contact__method">Phone:</span> 01382 360214
+        </li>
+        <li class="address">
+          <span class="contact__method">Address:</span> 105 Main Street, Longforgan,
+          DD2 5EW
+        </li>
+        <li class="facebook">
+          <span class="contact__method">Find us on Facebook:</span>
+          <a
+            href="https://www.facebook.com/profile.php?id=100063454939653&sk=about"
+            referrerpolicy="no-referrer"
+            target="_blank">here:</a
+          >
+        </li>
+      </ul>
+
+      <div>
+        <p>
+          If you have any questions or inquiries, please feel free to reach out
+          to us!
+        </p>
+      </div>
+    </div>
+
+    <div id="opening-times" class="wrapper opening-times-wrapper flow">
+      <div>
+        <h2 class="title">Store - Opening and Closing Times</h2>
+      </div>
+
+      <div class="table__wrapper">
+        <table>
+          <tbody>
+            <tr>
+              <td class="day">Monday</td>
+              <td>7:00 AM</td>
+              <td>6:30 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Tuesday</td>
+              <td>7:00 AM</td>
+              <td>6:30 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Wednesday</td>
+              <td>7:00 AM</td>
+              <td>6:30 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Thursday</td>
+              <td>7:00 AM</td>
+              <td>6:30 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Friday</td>
+              <td>7:00 AM</td>
+              <td>6:30 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Saturday</td>
+              <td>8:00 AM</td>
+              <td>6:30 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Sunday</td>
+              <td>8:00 AM</td>
+              <td>4:00 PM</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div>
+          <p class="xs">
+            <span class="disclaimer">*</span>Opening times may vary on public
+            holidays. May be subject to change. Closure periods may apply.
+            Please contact us for the most up-to-date information.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="links" class="wrapper links-wrapper flow">
+      <div>
+        <h2 class="title">Useful Links</h2>
+      </div>
+
+      <ul role="list" class="links__list">
+        <li>
+          <a href="https://www.postoffice.co.uk/" target="_blank">Post Office</a
+          >
+        </li>
+        <!-- camelot lottery -->
+        <li>
+          <a href="https://www.national-lottery.co.uk/" target="_blank"
+            >The National Lottery</a
+          >
+        </li>
+      </ul>
+    </div>
+  </Main>
+</Layout>
+
+<style>
+  h2 {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .wrapper {
+    margin-block: 1rem;
+    padding-block: 100px;
+    background-color: #fff;
+  }
+
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  /* About Us */
+
+  .aboutus-wrapper {
+    scroll-margin: calc(96px + 1rem);
+  }
+
+  .aboutus-wrapper .image {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 300px;
+    filter: grayscale();
+    margin-block: 1rem;
+    object-fit: cover;
+  }
+
+  .aboutus__info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .aboutus__info > p {
+    max-width: 70ch;
+  }
+
+  /* Opening Times */
+
+  .opening-times-wrapper {
+    scroll-margin: calc(96px + 1rem);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flow > * + * {
+    margin-block-start: 1.5rem;
+  }
+
+  .day {
+    font-weight: 600;
+  }
+
+  /* .table__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+  .table__wrapper > div {
+    flex: 1;
+    padding: 1rem;
+    max-width: 400px;
+  } */
+
+  table {
+    width: 100%;
+    max-width: max-content;
+    border-collapse: collapse;
+    margin: auto;
+    outline: 2px dashed black;
+  }
+
+  td,
+  th {
+    padding: 0.5em 1.5em;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  td:not(.day) {
+    font-weight: 300;
+  }
+
+  .xs {
+    margin-top: 1rem;
+    max-width: 70ch;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .disclaimer {
+    color: #333;
+    font-size: 1.1rem;
+  }
+
+  /* Contact Us */
+
+  .contactus-wrapper {
+    scroll-margin: calc(96px + 1rem);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact__info {
+    padding: 1rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contact__method {
+    font-weight: 700;
+  }
+
+  .email {
+    display: none;
+  }
+
+  /* Links */
+
+  .links-wrapper {
+    scroll-margin: calc(96px + 1rem);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .links__list {
+    padding: 1rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .links__list > li {
+    margin-block: 0.5rem;
+  }
+
+  .links__list > li > a {
+    text-decoration: none;
+    color: #0070f3;
+  }
+
+  .links__list > li > a:hover {
+    text-decoration: underline;
+  }
+</style>
