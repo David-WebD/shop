@@ -1,5 +1,5 @@
 ---
-import Styles from "../styles/style.css";
+import "../styles/style.css";
 import Header from "../partials/Header.astro";
 import Footer from "../partials/Footer.astro";
 const { pageTitle } = Astro.props;
@@ -38,7 +38,6 @@ const { pageTitle } = Astro.props;
     <meta property="og:type" content="website" />
 
     <title>{pageTitle}</title>
-    <link rel="stylesheet" href={Styles} />
   </head>
   <body>
     <div class="default-layout">
