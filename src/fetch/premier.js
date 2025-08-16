@@ -18,6 +18,12 @@ const CACHE_DURATION = 1000 * 60 * 5; // 5 minutes
 
 
     const offers = [];
+    let duration = '';
+  const footerText = $("footer").text().trim();
+  duration = footerText.match(/^(.*?\.)/)?.[1] || 'No duration specified';
+
+    // Select the offer elements
+
    $("ul.full li.col-md-3").each((_, el) => {
     const title = $(el).find("h3").text().trim();
     const link = $(el).find("a").first().attr("href");
@@ -26,9 +32,11 @@ const CACHE_DURATION = 1000 * 60 * 5; // 5 minutes
     offers.push({
       id: _,
       title,
+      duration: duration,
       link: link ? `https://www.premier-stores.co.uk${link}` : null,
       image: img ? `https://www.premier-stores.co.uk${img}` : null,
         });
+
     });
 
 

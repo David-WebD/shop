@@ -27,6 +27,7 @@ interface Offer {
   link: string;
   image: string;
   description: string;
+  duration: string;
 }
 
 const offers: Offer[] = await getOffers();
@@ -181,9 +182,11 @@ const offers: Offer[] = await getOffers();
             <ul role="list" class="offers-list">
               {offers.map((offer: Offer) => (
                 <li class="offer">
+                  <p class="duration">*{offer.duration}</p>
                   <img src={offer.image} alt={offer.title} />
-                  <h4>{offer.title}</h4>
+                  <h4 class="offer-title">{offer.title}</h4>
                   <p>{offer.description}</p>
+
                   <a href={offer.link}>Learn More</a>
                 </li>
               ))}
@@ -390,6 +393,21 @@ const offers: Offer[] = await getOffers();
 
   .offers__info > p {
     max-width: 70ch;
+  }
+
+  .duration {
+    opacity: 0.6;
+    font-size: small;
+    font-weight: 500;
+  }
+
+  .offer-title {
+    /* truncate 3 lines */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    margin-block: 0.5rem;
   }
 
   @media (max-width: 1075px) {
