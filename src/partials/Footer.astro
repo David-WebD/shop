@@ -20,6 +20,7 @@ const { date = new Date().getFullYear() } = Astro.props;
       onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
     >
       <svg
+        class="icon icon--arrow-up"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="none"
@@ -64,6 +65,11 @@ const { date = new Date().getFullYear() } = Astro.props;
   @media (width < 1075px) {
     .footer-wrapper {
       flex-direction: column;
+    }
+
+    .icon {
+      min-height: 20px;
+      min-width: 20px;
     }
   }
 </style>
