@@ -1,7 +1,9 @@
 ---
 import Layout from "../layout/layout.astro";
 import Main from "../partials/Main.astro";
-import Image from "astro/components/Image.astro";
+import getOffers from "../fetch/premier";
+import { Image } from "astro:assets";
+
 const VillageShop = "/village-shop.jpg";
 const Strawberry = "/strawberry.svg";
 
@@ -19,7 +21,15 @@ if (summerMonths.includes(currentMonth)) {
   console.log("It's not summer.");
 }
 
-console.log();
+interface Offer {
+  id: number;
+  title: string;
+  link: string;
+  image: string;
+  description: string;
+}
+
+const offers: Offer[] = await getOffers();
 ---
 
 <Layout pageTitle="Longforgan Newsagent and General Store">
@@ -154,6 +164,35 @@ console.log();
       </div>
     </div>
 
+    {
+      offers.length > 0 ? (
+        <div id="offers" class="alt-wrapper offers-wrapper flow">
+          <div class="offers__info">
+            <h2 class="title">Premier Offers</h2>
+            <p>
+              <span class="disclaimer">*</span> Offers are subject to
+              availability and may change. Products may vary and{" "}
+              <b>may not be available in all stores</b>. Please check in-store
+              for the latest information.
+            </p>
+          </div>
+
+          <div>
+            <ul role="list" class="offers-list">
+              {offers.map((offer: Offer) => (
+                <li class="offer">
+                  <img src={offer.image} alt={offer.title} />
+                  <h4>{offer.title}</h4>
+                  <p>{offer.description}</p>
+                  <a href={offer.link}>Learn More</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : null
+    }
+
     <div id="links" class="wrapper links-wrapper flow">
       <div>
         <h2 class="title">Useful Links</h2>
@@ -186,10 +225,18 @@ console.log();
     text-underline-offset: 2px;
   }
 
+  ul {
+    padding-inline-start: 0;
+  }
+
   .wrapper {
     margin-block: 1rem;
     padding-block: 100px;
     background-color: #fff;
+  }
+
+  .alt-wrapper {
+    margin-block: 1rem;
   }
 
   .title {
@@ -319,6 +366,59 @@ console.log();
   .disclaimer {
     color: #333;
     font-size: 1.1rem;
+  }
+
+  /* Offers */
+
+  .offers-wrapper {
+    scroll-margin: calc(96px + 1rem);
+  }
+
+  .offers-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .offers__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .offers__info > p {
+    max-width: 70ch;
+  }
+
+  @media (max-width: 1075px) {
+    .offers-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .offers-list {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .offer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 100%;
+    padding: 1rem;
+    background-color: #fff;
+    list-style: none;
+    line-height: 1.4;
+  }
+
+  .offer {
+    min-height: 350px;
+    border: 1px solid #000;
   }
 
   /* Contact Us */

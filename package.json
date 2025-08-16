@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/netlify": "^6.5.7",
     "@astrojs/sitemap": "^3.5.0",
-    "astro": "^5.13.2"
+    "astro": "^5.13.2",
+    "cheerio": "^1.1.2"
   }
 }
